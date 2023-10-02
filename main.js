@@ -3,7 +3,7 @@ const elements = document.querySelector("#elements");
 document.addEventListener("DOMContentLoaded", async () => {
   const url = "https://jsonplaceholder.typicode.com/users";
 
-  const result = await getUsersPromises(url);
+  const result = await getUsersAwait(url);
   console.log("result", result);
   showContent(result);
 });
@@ -18,7 +18,7 @@ async function getUsersAwait(url) {
     }
 
     const users = await response.json();
-    showContent(users);
+    // showContent(users);
     console.log("Usuarios await:");
     console.log(users);
     return users;
@@ -38,7 +38,7 @@ function getUsersPromises(url) {
       return response.json();
     })
     .then((users) => {
-      showContent(users);
+      // showContent(users);
       console.log("Usuarios Promises:");
       console.log(users);
       return users;
