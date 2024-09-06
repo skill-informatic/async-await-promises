@@ -1,10 +1,10 @@
 const elements = document.querySelector("#elements");
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const url = "https://jsonplaceholder.typicode.com/users";
+  const url = "https://jsonplaceholder.typicode.com/11";
 
   const result = await getUsersAwait(url);
-  console.log("result", result);
+  console.log("result", result?result:"Hubo un error");
   showContent(result);
 });
 async function getUsersAwait(url) {
@@ -53,19 +53,22 @@ const showContent = (users) => {
   const fragment = document.createDocumentFragment();
 
   // Recorremos la lista de usuarios y creamos los elementos
-  users.forEach((user) => {
-    const userElement = document.createElement("div");
-    userElement.id = user.id;
-    userElement.innerHTML = `
-        <h3>Name: ${user.name}</h3>
-        <p>Email: ${user.email}</p>
-      `;
-    fragment.appendChild(userElement);
-  });
-
-  // Limpiamos el contenido existente en elements
-  elements.innerHTML = "";
-
-  // Agregamos los elementos al DOM de una sola vez
-  elements.appendChild(fragment);
+  if (users) {
+    users.forEach((user) => {
+      const userElement = document.createElement("div");
+      userElement.id = user.id;
+      userElement.innerHTML = `
+          <h3>Name: ${user.name}</h3>
+          <p>Email: ${user.email}</p>
+        `;
+      fragment.appendChild(userElement);
+    });
+  
+    // Limpiamos el contenido existente en elements
+    elements.innerHTML = "";
+  
+    // Agregamos los elementos al DOM de una sola vez
+    elements.appendChild(fragment);
+  }
+  
 };
