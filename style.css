@@ -9,3 +9,7 @@ h3 {
 p {
   color: white;
 }
+.alert {
+  color: red;
+  text-transform: uppercase;
+}
