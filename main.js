@@ -20,8 +20,6 @@ async function getUsersAwait(url) {
 
     const users = await response.json();
     // showContent(users);
-    console.log("Usuarios await:");
-    console.log(users);
     return users;
   } catch (error) {
     return `Error: ${error.message}`;
@@ -40,8 +38,6 @@ function getUsersPromises(url) {
     })
     .then((users) => {
       // showContent(users);
-      console.log("Usuarios Promises:");
-      console.log(users);
       return users;
     })
     .catch((error) => {
@@ -53,7 +49,7 @@ const showContent = (users) => {
   // Utilizamos un fragmento para construir los elementos antes de agregarlos al DOM
   const fragment = document.createDocumentFragment();
   // Recorremos la lista de usuarios y creamos los elementos
-  console.log(users);
+
   if (typeof users === "string") {
     elements.innerHTML = "";
     const Alert = document.createElement("h3");
